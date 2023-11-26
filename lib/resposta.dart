@@ -13,7 +13,7 @@ class Resposta extends StatelessWidget {
       margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.purple,
+          backgroundColor: Color(0xFFB21DF2),
         ),
         onPressed: onPressed,
         child: Text(

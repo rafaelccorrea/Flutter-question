@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import './questao.dart';
 import './resposta.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(new PerguntaApp());
 }
 
@@ -13,6 +15,17 @@ class PerguntaApp extends StatefulWidget {
 
 class _PerguntaAppState extends State<PerguntaApp> {
   int _perguntaSelect = 0;
+  bool _isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    Future.delayed(Duration(seconds: 2), () {
+      setState(() {
+        _isLoading = false;
+      });
+    });
+  }
 
   final List<Map<String, dynamic>> _perguntas = const [
     {
@@ -45,12 +58,27 @@ class _PerguntaAppState extends State<PerguntaApp> {
 
   @override
   Widget build(BuildContext context) {
+    // Se estiver carregando, exibir o splash screen
+    if (_isLoading) {
+      return const MaterialApp(
+        home: Scaffold(
+          body: Center(
+            child: SpinKitFadingCube(
+              color: Color(0xFFB21DF2),
+              size: 50.0,
+            ),
+          ),
+        ),
+      );
+    }
+
     final List<String>? respostas = selectQuestion
         ? (_perguntas[_perguntaSelect]['respostas'] as List<Object?>)
             ?.cast<String>()
         : null;
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           title: const Text(
@@ -58,7 +86,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
             style: TextStyle(color: Colors.white),
           ),
           centerTitle: true,
-          backgroundColor: Colors.purple,
+          backgroundColor: Color(0xFFB21DF2),
           leading: const Icon(
             Icons.question_answer,
             color: Color.fromARGB(255, 255, 255, 255),
