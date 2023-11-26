@@ -10,15 +10,35 @@ class Resposta extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      margin: EdgeInsets.fromLTRB(0, 5, 0, 5),
-      child: ElevatedButton(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Color(0xFFB21DF2),
-        ),
-        onPressed: onPressed,
-        child: Text(
-          texto,
-          style: const TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
+      margin: const EdgeInsets.fromLTRB(10, 10, 10, 5),
+      child: InkWell(
+        onTap: onPressed,
+        child: Ink(
+          padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
+          decoration: BoxDecoration(
+            color: const Color(0xFFB21DF2),
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: Text(
+                  texto,
+                  style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 2),
+                ),
+              ),
+              const SizedBox(width: 10),
+              const Icon(
+                Icons.question_mark_rounded,
+                color: Colors.white,
+              ),
+            ],
+          ),
         ),
       ),
     );
