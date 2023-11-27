@@ -27,27 +27,51 @@ class _PerguntaAppState extends State<PerguntaApp> {
     });
   }
 
-  final List<Map<String, dynamic>> _perguntas = const [
+  final List<Map<String, Object>> _perguntas = const [
+    {
+      'pergunta': 'Qual é a sua cor favorita?',
+      'respostas': [
+        {'texto': 'azul', 'nota': 10},
+        {'texto': 'preto', 'nota': 8},
+        {'texto': 'vermelho', 'nota': 9},
+        {'texto': 'verde', 'nota': 7},
+      ]
+    },
     {
       'pergunta': 'Qual é o seu animal favorito?',
-      'respostas': ['cachorro', 'gato', 'pássaro', 'peixe']
+      'respostas': [
+        {'texto': 'cachorro', 'nota': 10},
+        {'texto': 'gato', 'nota': 8},
+        {'texto': 'pássaro', 'nota': 9},
+        {'texto': 'peixe', 'nota': 7},
+      ]
     },
     {
       'pergunta': 'Qual é a sua estação do ano preferida?',
-      'respostas': ['verão', 'outono', 'inverno', 'primavera']
+      'respostas': [
+        {'texto': 'verão', 'nota': 10},
+        {'texto': 'outono', 'nota': 8},
+        {'texto': 'inverno', 'nota': 9},
+        {'texto': 'primavera', 'nota': 7},
+      ]
     },
     {
       'pergunta': 'O que você prefere fazer nas horas vagas?',
       'respostas': [
-        'ler',
-        'assistir filmes',
-        'praticar esportes',
-        'ouvir música'
+        {'texto': 'ler', 'nota': 10},
+        {'texto': 'assistir filmes', 'nota': 8},
+        {'texto': 'praticar esportes', 'nota': 9},
+        {'texto': 'ouvir música', 'nota': 7},
       ]
     },
     {
       'pergunta': 'Qual é o seu destino de viagem dos sonhos?',
-      'respostas': ['Paris', 'Tóquio', 'Nova York', 'Ilhas Maldivas']
+      'respostas': [
+        {'texto': 'Paris', 'nota': 10},
+        {'texto': 'Tóquio', 'nota': 8},
+        {'texto': 'Nova York', 'nota': 9},
+        {'texto': 'Ilhas Maldivas', 'nota': 7},
+      ]
     },
   ];
 
