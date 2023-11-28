@@ -16,7 +16,7 @@ class Resposta extends StatelessWidget {
         child: Ink(
           padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 25),
           decoration: BoxDecoration(
-            color: const Color(0xFFB21DF2),
+            color: const Color(0xFF6763BF),
             borderRadius: BorderRadius.circular(10),
           ),
           child: Row(

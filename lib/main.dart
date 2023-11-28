@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
+
+import 'package:lottie/lottie.dart';
 import './resultado.dart';
 import './questionario.dart';
 
@@ -21,7 +22,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 2), () {
+    Future.delayed(Duration(seconds: 5), () {
       setState(() {
         _isLoading = false;
       });
@@ -100,12 +101,16 @@ class _PerguntaAppState extends State<PerguntaApp> {
   Widget build(BuildContext context) {
     // Se estiver carregando, exibir o splash screen
     if (_isLoading) {
-      return const MaterialApp(
+      return MaterialApp(
         home: Scaffold(
           body: Center(
-            child: SpinKitFadingCube(
-              color: Color(0xFFB21DF2),
-              size: 50.0,
+            child: Lottie.asset(
+              'lottie/questions.json',
+              width: 300,
+              height: 300,
+              repeat: true,
+              reverse: false,
+              animate: true,
             ),
           ),
         ),
@@ -121,7 +126,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
               style: TextStyle(color: Colors.white),
             ),
             centerTitle: true,
-            backgroundColor: Color(0xFFB21DF2),
+            backgroundColor: Color(0xFF6763BF),
             leading: const Icon(
               Icons.question_answer,
               color: Color.fromARGB(255, 255, 255, 255),

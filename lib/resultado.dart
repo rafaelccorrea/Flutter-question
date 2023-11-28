@@ -37,7 +37,7 @@ class Resultado extends StatelessWidget {
         TextButton(
           onPressed: _resetQuestion,
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(Color(0xFFB21DF2)),
+            backgroundColor: MaterialStateProperty.all(Color(0xFF6763BF)),
             foregroundColor: MaterialStateProperty.all(Colors.white),
             minimumSize: MaterialStateProperty.all(Size(150, 30)),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
