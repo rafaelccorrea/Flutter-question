@@ -15,6 +15,7 @@ class PerguntaApp extends StatefulWidget {
 
 class _PerguntaAppState extends State<PerguntaApp> {
   int _perguntaSelect = 0;
+  int _pontuacaoTotal = 0;
   bool _isLoading = true;
 
   @override
@@ -31,53 +32,63 @@ class _PerguntaAppState extends State<PerguntaApp> {
     {
       'pergunta': 'Qual é a sua cor favorita?',
       'respostas': [
-        {'texto': 'azul', 'nota': 10},
-        {'texto': 'preto', 'nota': 8},
-        {'texto': 'vermelho', 'nota': 9},
-        {'texto': 'verde', 'nota': 7},
+        {'texto': 'azul', 'pontuacao': 10},
+        {'texto': 'preto', 'pontuacao': 8},
+        {'texto': 'vermelho', 'pontuacao': 9},
+        {'texto': 'verde', 'pontuacao': 7},
       ]
     },
     {
       'pergunta': 'Qual é o seu animal favorito?',
       'respostas': [
-        {'texto': 'cachorro', 'nota': 10},
-        {'texto': 'gato', 'nota': 8},
-        {'texto': 'pássaro', 'nota': 9},
-        {'texto': 'peixe', 'nota': 7},
+        {'texto': 'cachorro', 'pontuacao': 10},
+        {'texto': 'gato', 'pontuacao': 8},
+        {'texto': 'pássaro', 'pontuacao': 9},
+        {'texto': 'peixe', 'pontuacao': 7},
       ]
     },
     {
       'pergunta': 'Qual é a sua estação do ano preferida?',
       'respostas': [
-        {'texto': 'verão', 'nota': 10},
-        {'texto': 'outono', 'nota': 8},
-        {'texto': 'inverno', 'nota': 9},
-        {'texto': 'primavera', 'nota': 7},
+        {'texto': 'verão', 'pontuacao': 10},
+        {'texto': 'outono', 'pontuacao': 8},
+        {'texto': 'inverno', 'pontuacao': 9},
+        {'texto': 'primavera', 'pontuacao': 7},
       ]
     },
     {
       'pergunta': 'O que você prefere fazer nas horas vagas?',
       'respostas': [
-        {'texto': 'ler', 'nota': 10},
-        {'texto': 'assistir filmes', 'nota': 8},
-        {'texto': 'praticar esportes', 'nota': 9},
-        {'texto': 'ouvir música', 'nota': 7},
+        {'texto': 'ler', 'pontuacao': 10},
+        {'texto': 'assistir filmes', 'pontuacao': 8},
+        {'texto': 'praticar esportes', 'pontuacao': 9},
+        {'texto': 'ouvir música', 'pontuacao': 7},
       ]
     },
     {
       'pergunta': 'Qual é o seu destino de viagem dos sonhos?',
       'respostas': [
-        {'texto': 'Paris', 'nota': 10},
-        {'texto': 'Tóquio', 'nota': 8},
-        {'texto': 'Nova York', 'nota': 9},
-        {'texto': 'Ilhas Maldivas', 'nota': 7},
+        {'texto': 'Paris', 'pontuacao': 10},
+        {'texto': 'Tóquio', 'pontuacao': 8},
+        {'texto': 'Nova York', 'pontuacao': 9},
+        {'texto': 'Ilhas Maldivas', 'pontuacao': 7},
       ]
     },
   ];
 
-  void _responder() {
+  void _responder(int pontuacao) {
+    if (selectQuestion) {
+      setState(() {
+        _perguntaSelect++;
+        _pontuacaoTotal += pontuacao;
+      });
+    }
+  }
+
+  void restartQuestion() {
     setState(() {
-      _perguntaSelect++;
+      _perguntaSelect = 0;
+      _pontuacaoTotal = 0;
     });
   }
 
@@ -121,7 +132,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
                   perguntas: _perguntas,
                   questionSelected: _perguntaSelect,
                   responder: _responder)
-              : Resultado()),
+              : Resultado(_pontuacaoTotal, restartQuestion)),
     );
   }
 }
